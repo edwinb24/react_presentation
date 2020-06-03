@@ -32,11 +32,13 @@
 
 .List li span {
     flex: 1;
+    cursor: pointer;
 }
 
 .List button {
     background: transparent;
     border: 0px;
+    cursor: pointer;
 }
 
 .List button::before {
@@ -66,11 +68,33 @@
     filter: grayscale(40%);
 }
 
-.Completed {
+.Completed span {
     opacity: 0.4;
 }
 
 .Completed span {
     font-style: italic;
     text-decoration: line-through;
+}
+
+.addItem {
+    display: flex;
+    justify-content: center;
+}
+
+.addItem span {
+    color: #eee;
+    border-radius: 50px;
+    background-color: green;
+    display: inline-block;
+    font-size: 50px;
+    font-weight: 800;
+    line-height: .6;
+    padding-bottom: 10px;
+    padding-left: 3px;
+    height: 40px;
+    padding-right: 3px;
+    margin: 10px;
+    cursor: pointer;
+    box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.7);
 }

@@ -12,6 +12,11 @@
     font-size: 25px;
 }
 
+.Logo, .Menu {
+    cursor: pointer;
+}
+
+
 .StickyName {
     position: relative;
     margin: 5px;
@@ -74,21 +79,6 @@
 .StickyName:focus-within::after {
     opacity: 0.6;
 }
-
-
-/* .StickyName:hover::before,
-.StickyName:hover::before {
-    opacity: 1;
-}
-
-.StickyName:hover::after {
-    content: "aaaaaaa";
-    position: absolute;
-    right: 0px;
-    bottom: 0px;
-    width: 100%;
-    height: 100%;
-} */
 
 .Menu{
     font-size: 25px;
