@@ -1,0 +1,81 @@
+li {
+    display: flex;
+    position: relative;
+    border-bottom: 2px solid #000;
+}
+
+li::before {
+    content:"";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: #999;
+    top: 0px;
+    left: 0px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.6s;
+}
+
+li:hover::before {
+    opacity: 0.4;
+    z-index: -1;
+}
+
+li input {
+    flex: 1;
+    cursor: pointer;
+    height: 100%;
+    border: 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    font-size: clamp(16px, 5vw, 20px);
+    border: 2px solid transparent;
+    border-radius: 5px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+button {
+    background: transparent;
+    border: 0px;
+    cursor: pointer;
+    position: relative;
+}
+
+ button::before {
+    content:"";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: #999;
+    border: 1px solid #333;
+    top: 0px;
+    left: 0px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s;
+    box-sizing: border-box;
+}
+
+ button:hover::before {
+    opacity: 0.5;
+}
+
+.Edit {
+    filter: grayscale(60%);
+}
+
+.Remove {
+    filter: grayscale(40%);
+}
+
+.Completed input {
+    opacity: 0.4;
+}
+
+.Completed input {
+    font-style: italic;
+    text-decoration: line-through;
+}

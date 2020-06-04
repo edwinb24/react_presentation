@@ -1,16 +1,16 @@
 body {
-  font-family: 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
   min-height: 100vh;
 }
 
 body, input {
   color: #eee;
   background-color: #282c34;
+  font-family: 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
 }
 
-body, ul {
+body, ul, input {
   margin: 0;
   padding: 0;
 }
