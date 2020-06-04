@@ -1,6 +1,17 @@
 import React, {Component} from 'react'
 
 class Jokes extends Component {
+    state = {
+        joke: "My dog used to chase people on a bike a lot. It got so bad that I had to take his bike away."
+    }
+
+    componentDidMount() {
+        console.log('[Jokes.js] componentDidMount');
+    }    
+
+    componentDidUpdate() {
+        console.log('[Jokes.js] componentDidUpdate');
+    }
     
     render() {
         const joking_space = {
@@ -27,8 +38,7 @@ class Jokes extends Component {
             <div style={joking_space}>
                 <span style={emoji} role="img" aria-label="laughting emoji">😆</span> 
                 <span style={joke}>
-                    "My dog used to chase people on a bike a lot.
-                    It got so bad that I had to take his bike away."
+                    "{this.state.joke}"
                 </span> 
                 <span style={emoji} role="img" aria-label="laughting emoji">😆</span> 
             </div>

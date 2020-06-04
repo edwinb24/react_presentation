@@ -13,6 +13,21 @@ export default class List extends Component {
         ]
     }
 
+    componentDidMount() {
+        console.log('[List.js] componentDidMount');
+    }    
+
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log('[List.js] shouldComponentUpdate');
+        // if(nextState.list[0].isComplete)
+        //     return false
+        return true
+    }
+    
+    componentDidUpdate() {
+        console.log('[List.js] componentDidUpdate');
+    }
+
     toggleComplete = (event, id) => {
         const tempTask = this.state.list[id]
         tempTask.isComplete = !tempTask.isComplete
@@ -28,7 +43,6 @@ export default class List extends Component {
         const fieldToEdit = event.target.previousSibling
         fieldToEdit.removeAttribute("readonly")
         fieldToEdit.focus()
-        console.log(fieldToEdit)
     }
 
     reReadOnly = (event) => {
@@ -36,7 +50,6 @@ export default class List extends Component {
     }
 
     deleteTask = (id) => {
-        console.log('id', id)
         const tempList = [...this.state.list]
         tempList.splice(id, 1)
         this.setState({
@@ -46,8 +59,6 @@ export default class List extends Component {
 
     updateTask = (event, id) => {
         const tempTask =  this.state.list[id]
-        console.log('tempTask', tempTask)
-
         tempTask.name = event.target.value
         
         const modifiedList = [...this.state.list]
@@ -59,7 +70,7 @@ export default class List extends Component {
 
     addTask = () => {
         const modifiedList = [...this.state.list]
-        modifiedList.pop({name:"", isComplete:false})
+        modifiedList.push({name:"", isComplete:false})
         this.setState({
             list : modifiedList
         })
@@ -88,7 +99,7 @@ export default class List extends Component {
                         {tasks}
                     </ul>
                     <div className={classes.addItem}>
-                        <span>+</span>
+                        <span onClick={this.addTask}>+</span>
                     </div>
                 </Fragment>
             )
