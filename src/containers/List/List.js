@@ -3,6 +3,7 @@ import React, { Component, Fragment } from 'react'
 import Task from "./Task/Task"
 
 import classes from "./List.module.css";
+import Auxiliar from "./../../hoc/Auxiliar"
 
 export default class List extends Component {
     state = {
@@ -94,14 +95,14 @@ export default class List extends Component {
         })
 
         return (
-                <Fragment>
+                <Auxiliar>
                     <ul className={classes.List}>
                         {tasks}
                     </ul>
                     <div className={classes.addItem}>
                         <span onClick={this.addTask}>+</span>
                     </div>
-                </Fragment>
+                </Auxiliar>
             )
     }
 }
