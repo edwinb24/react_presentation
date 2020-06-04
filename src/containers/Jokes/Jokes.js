@@ -1,14 +1,38 @@
 import React, {Component} from 'react'
 
+const dadJokesURL = "https://icanhazdadjoke.com/"
+
 class Jokes extends Component {
     state = {
         joke: "My dog used to chase people on a bike a lot. It got so bad that I had to take his bike away."
     }
 
-    componentDidMount() {
-        console.log('[Jokes.js] componentDidMount');
-    }    
+    giveMeAJoke = (newJoke) => {
+        this.setState ({
+            joke: newJoke
+        })
+    }
 
+    async componentDidMount () {
+        try {
+            const resp = await fetch(dadJokesURL,{
+                headers: {
+                    Accept: 'application/json '
+                }
+            })
+            const joke = await resp.json()
+            if (!joke) {
+            throw Error(resp.statusText);
+            }
+            this.giveMeAJoke(joke.joke)
+        } catch (error) {
+            console.log(
+            `%c 🤦Oh no! No dad jokes  🤦\n 
+            ${error}`, "color: orange; font-size: 18px; font-weight: 800"
+            )
+        }
+    }
+    
     componentDidUpdate() {
         console.log('[Jokes.js] componentDidUpdate');
     }
