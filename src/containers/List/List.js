@@ -7,38 +7,75 @@ import classes from "./List.module.css";
 export default class List extends Component {
     state = {
         list: [
-            {id: "0", name:"Finish painting Tom's fence", isComplete: true},
-            {id: "1", name:"Prepare Lasagna for Jon's cat", isComplete: false},
-            {id: "2", name:"Paint a Picasso", isComplete: false}
+            {name:"Finish painting Tom's fence", isComplete: true},
+            {name:"Prepare Lasagna for Jon's cat", isComplete: false},
+            {name:"Paint a Picasso", isComplete: false}
         ]
     }
 
     toggleComplete = (event, id) => {
-        console.log(`Toogle Completion ${id}`)
+        const tempTask = this.state.list[id]
+        tempTask.isComplete = !tempTask.isComplete
+        const modifiedList = [...this.state.list]
+        modifiedList[id] = tempTask
+
+        this.setState({
+            list : modifiedList
+          })
     }
 
-    editTask = (event, id) => {
-        console.log(`Edit ${id}`)
+    editTask = (event) => {
+        const fieldToEdit = event.target.previousSibling
+        fieldToEdit.removeAttribute("readonly")
+        fieldToEdit.focus()
+        console.log(fieldToEdit)
     }
 
-    deleteTask = (event, id) => {
-        console.log(`Delete ${id}`)
+    reReadOnly = (event) => {
+        event.target.setAttribute("readonly", true)
+    }
+
+    deleteTask = (id) => {
+        console.log('id', id)
+        const tempList = [...this.state.list]
+        tempList.splice(id, 1)
+        this.setState({
+            list: tempList
+        })
     }
 
     updateTask = (event, id) => {
-        console.log(`Update ${id}`)
+        const tempTask =  this.state.list[id]
+        console.log('tempTask', tempTask)
+
+        tempTask.name = event.target.value
+        
+        const modifiedList = [...this.state.list]
+        modifiedList[id] = tempTask
+        this.setState({
+            list : modifiedList
+        })
+    }
+
+    addTask = () => {
+        const modifiedList = [...this.state.list]
+        modifiedList.pop({name:"", isComplete:false})
+        this.setState({
+            list : modifiedList
+        })
     }
 
     render() {
-        const tasks = this.state.list.map((task) => {
+        const tasks = this.state.list.map((task, index) => {
             return(       
                 <Task 
                     isComplete={task.isComplete} 
-                    key={task.id}
-                    toggleComplete={(event) => this.toggleComplete(event, task.id)}
-                    edit={(event) => this.editTask(event, task.id)}
-                    delete={(event) => this.deleteTask(event, task.id)}
-                    update={(event) => this.updateTask(event, task.id)}
+                    key={index}
+                    reReadOnly={(event) => this.reReadOnly(event)}
+                    toggleComplete={(event) => this.toggleComplete(event, index)}
+                    edit={(event) => this.editTask(event, index)}
+                    delete={() => this.deleteTask(index)}
+                    update={(event) => this.updateTask(event, index)}
                 >
                     {task.name}
                 </Task>
