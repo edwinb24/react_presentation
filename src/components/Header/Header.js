@@ -1,8 +1,9 @@
 import React from 'react'
-import './Header.css'
 
-const Header = () => (
-    <div className="header">
+import "./Header.css"
+
+const Header = () => 
+    <div className="Header">
         <div className="Logo">
             <span role="img" aria-label="Super Amazing Most Wonderful Awesome Note App Logo">📝</span>
         </div>
@@ -11,6 +12,5 @@ const Header = () => (
         </span>
         <div className="Menu">☰</div>
     </div>
-)
 
 export default Header

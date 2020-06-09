@@ -1,5 +1,5 @@
 import React from 'react'
 
-const Auxiliar = (props) => <div className={props.class}>{props.children}</div>
+const Auxiliar = (props) => <div>{props.children}</div>
 
 export default Auxiliar
